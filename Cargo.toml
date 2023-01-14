@@ -1,0 +1,19 @@
+[package]
+name = "lxinfo"
+description = "Linux System Information"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "lxinfo"
+path = "src/lib.rs"
+
+[dependencies]
+byte-unit = "*"
+libc = "*"
+
+[profile.release]
+panic = "abort"
+opt-level = 3
+strip = true
+lto = "fat"
