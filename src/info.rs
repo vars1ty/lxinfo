@@ -43,7 +43,7 @@ struct Uptime {
 
 /// Type of information to obtain.
 #[derive(PartialEq)]
-enum Type {
+pub enum Type {
     Username,
     HostName,
     KernelVersion,
@@ -83,8 +83,8 @@ fn kb_to_gb(number: f64) -> String {
     unit.get_adjusted_unit(byte_unit::ByteUnit::GB).to_string()
 }
 
-/// Returns the active kernel version.
-fn get_by_type(r#type: Type) -> Option<String> {
+/// Fetches certan system info through `libc`.
+pub fn get_by_type(r#type: Type) -> Option<String> {
     // Create an uninitialized instance of `utsname`.
     let mut info = unsafe { MaybeUninit::<libc::utsname>::zeroed().assume_init() };
     // Store the output of `uname` into `info` as long as the type isn't `Username`.
