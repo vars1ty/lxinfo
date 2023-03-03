@@ -10,7 +10,7 @@ Linux System Information through `libc` and parsing system files.
 ```rust
 fn main() {
    // Basic way of grabbing your username.
-   let username = info::get_system_information().username;
+   let username = info::get_system_information().unwrap().username;
    println!("Your username is: {username}")
 }
 ```

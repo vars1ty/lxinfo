@@ -1,7 +1,10 @@
 [package]
 name = "lxinfo"
-description = "Linux System Information"
+description = "Linux System Information for systemd systems"
 authors = [ "varsity <refined@skiff.com>" ]
+license = "MIT"
+readme = "README.md"
+categories = [ "os::linux-apis", "parsing", "development-tools" ]
 version = "0.1.2"
 edition = "2021"
 
@@ -10,8 +13,8 @@ name = "lxinfo"
 path = "src/lib.rs"
 
 [dependencies]
-byte-unit = "*"
-libc = "*"
+byte-unit = "4.0.18"
+libc = "0.2.139"
 
 [profile.release]
 panic = "abort"
