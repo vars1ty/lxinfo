@@ -191,7 +191,11 @@ pub fn get_system_information() -> Option<SystemInfo> {
 
     let username = get_by_type(Type::Username)?;
     let hostname = get_by_type(Type::HostName)?;
-    let shell = std::env::var("SHELL").unwrap().split('/').last()?.to_owned();
+    let shell = std::env::var("SHELL")
+        .expect("[ERROR] Failed getting the value of the SHELL environment variable!")
+        .split('/')
+        .last()?
+        .to_owned();
     let kernel = get_by_type(Type::KernelVersion)?;
 
     let total_mem = minf_get_gb(&meminfo, "MemTotal");
